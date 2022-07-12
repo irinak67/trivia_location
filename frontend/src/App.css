@@ -1,0 +1,274 @@
+.App {
+  text-align: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  color: #666;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.questions {
+  max-width: none;
+}
+
+.questions > div {
+  flex-basis: calc(100% / 2 - 50px);
+}
+
+.questionTitle {
+  flex-basis: 100%;
+}
+
+.main > div {
+  flex-basis: calc(100% / 2 - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: inline-block;
+  font-size: 25px;
+  background-color: #ffa800;
+  color: #ffffff !important;
+  padding: 10px 50px;
+  border-radius: 15px;
+  margin: 25px auto;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.central_text {
+  flex-basis: 100% !important;
+}
+
+h1 {
+  font-size: 36px !important;
+  flex-basis: 100%;
+}
+
+.left_side {
+  padding: 25px 100px 25px 25px;
+}
+
+.right_side {
+  padding: 25px 25px 25px 100px;
+}
+
+.ques_left_side {
+  padding: 25px 100px 25px 25px;
+}
+
+.ques_right_side {
+  padding: 0 100px 25px 25px;
+}
+
+.map {
+  flex-basis: calc(100% / 3 - 50px) !important;
+  margin: 25px;
+}
+
+.googleMap {
+  flex-basis: 100% !important;
+  margin-bottom: 25px;
+}
+
+.label + .css-1480iag-MuiInputBase-root-MuiInput-root {
+  margin-bottom: 16px;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #ffa800 !important;
+  border-radius: 15px !important;
+}
+
+.sn_button {
+  padding: 16px !important;
+  border-radius: 15px !important;
+}
+
+.socButton {
+  display: block;
+  border-radius: 15px !important;
+  border: #ffa800 1px solid !important;
+  width: 100%;
+  height: 3.5rem;
+  margin-top: 0.4rem;
+  justify-content: center;
+  font-size: large !important;
+  font-family: inherit !important;
+  font-weight: bolder !important;
+}
+
+.kep-login-facebook {
+  width: 100%;
+  margin-bottom: 11px !important;
+  justify-content: center !important;
+  border-radius: 15px !important;
+  font-family: inherit !important;
+  font-weight: bolder !important;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-overall {
+  background-color: wheat;
+  border-radius: 10px;
+  border: 1px solid rgb(245, 242, 242);
+  padding: 16px;
+  margin: 10px auto;
+  min-width: 400px;
+  max-width: 1000px;
+  text-align: center;
+  color: rgb(21, 34, 8);
+}
+
+.normal-button {
+  background-color: #fffde7;
+  /* Green */
+  width: 650px;
+  height: 80px;
+  padding: 8px;
+  margin: 24px;
+  color: rgb(0, 3, 3);
+  font-weight: bolder;
+  font-size: large;
+  border-radius: 10px;
+  outline: none;
+  border: solid 1px #ffa800;
+  justify-content: center;
+}
+
+.normal-button:hover {
+  transform: scale(1.1);
+  transition: transform 150ms ease-in-out;
+  cursor: pointer;
+}
+
+.result-item {
+  border-radius: 2em;
+  box-shadow: 0 0 1em black;
+  padding: 1em;
+  margin: 2em;
+  background-color: snow;
+  height: 20rem;
+}
+
+.result-answers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.create-game {
+  padding: 5rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-med {
+  width: 15rem;
+  height: 3rem;
+  background-color: #ffa800 !important;
+  color: white !important;
+}
+
+.margin-left-med {
+  margin-left: 2rem !important;
+}
+
+.modalName-box input {
+  margin-left: 1rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
+  width: 15rem;
+}
+
+.modalName-box-radio {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.modalName-box-radio input {
+  padding: 0;
+  width: auto;
+}
+
+.modalName-box-radio input:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.modalName-box-radio label {
+  margin-left: 1rem;
+}
+
+.centerMyContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.smallBtn {
+  background-color: #ffa800 !important;
+  width: 7rem;
+  color: white !important;
+}
+
+.loaderBox {
+  padding: 7rem 5rem;
+}
+
+.resultsPage__results {
+  width: 100%;  
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultsPage__results__result {
+  flex: 1;
+}
+
+.cusInput {
+  /* margin-left: 1rem; */
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  padding: 1rem 0.5rem;
+  box-sizing: border-box;
+  width: 20rem;
+  outline: none;
+}
+
+.cusInput:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.my-facebook-button-class {
+  width: 100%;
+  background-color: #4c69ba;
+  border-radius: 1rem;
+  height: 3.5rem;
+  outline: none;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1rem;
+}

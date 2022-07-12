@@ -1,0 +1,14 @@
+.joinGame {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.joinGame__Form {
+  display: flex;
+  flex-flow: column;
+}
+
+.joinGame__Form h1 {
+  color: #ffa800;
+}

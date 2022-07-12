@@ -1,0 +1,49 @@
+.pop_reg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  max-width: 600px;
+  height: 33rem;
+  width: 500px;
+  /* border: 3px solid #ff8000; */
+  padding: 35px;
+  padding-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  outline: none;
+  border-radius: 1rem;
+}
+
+.pop_reg.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pop_reg.acti .pop_reg_content {
+  position: relative;
+  border-radius: 15px;
+}
+
+.pop_reg_close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.pop_reg_content .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  min-width: 300px;
+}
+
+.pop_reg_content .css-i4bv87-MuiSvgIcon-root {
+  color: #ff8000;
+}
+
+.musthave {
+  margin-bottom: 10px;
+  display: block;
+  margin-top: -17px;
+  font-size: 10px;
+}
