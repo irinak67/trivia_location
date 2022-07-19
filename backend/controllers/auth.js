@@ -3,7 +3,7 @@ const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken"); 
  
 const client = new OAuth2Client( 
-   "602070662525-cg5up3456lcbdngu7nhji2j6inpi8t1b.apps.googleusercontent.com"
+  process.env.GOOGLE_AUTH_CLIENT  
 ); 
  
 const User = require("../models/user.model"); 
@@ -14,8 +14,7 @@ exports.googlelogin = (req, res) => {
   client 
     .verifyIdToken({ 
       idToken: tokenId, 
-      audience: 
-        "602070662525-cg5up3456lcbdngu7nhji2j6inpi8t1b.apps.googleusercontent.com", 
+      audience: process.env.GOOGLE_AUTH_CLIENT,       
     }) 
     .then (async(response) => { 
       const { email_verified, email } = response.payload; 

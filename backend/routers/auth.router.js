@@ -10,14 +10,11 @@ require("dotenv").config();
 //email
 const nodemailer = require("nodemailer"); 
 const { google } = require("googleapis"); 
- 
-// These id's and secrets should come from .env file. 
-const CLIENT_ID = 
-  "602070662525-cg5up3456lcbdngu7nhji2j6inpi8t1b.apps.googleusercontent.com"; 
-const CLIENT_SECRET = "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"; 
-const REFRESH_TOKEN = 
-  "1//04Nh8YSb1wH3PCgYIARAAGAQSNwF-L9IrR-GTcsE5kkj2GJC3b-rQlogesx35R2TVc4TUABfIBHKxs48hxyYrVYNBzC_KhnT35uk"; 
-const REDIRECT_URI = "https://developers.google.com/oauthplayground"; 
+
+const CLIENT_ID = process.env.CLIENT_ID; 
+const CLIENT_SECRET = process.env.CLIENT_SECRET; 
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN; 
+const REDIRECT_URI = process.env.REDIRECT_URI; 
  
 const oAuth2Client = new google.auth.OAuth2( 
   CLIENT_ID,  
@@ -27,9 +24,10 @@ const oAuth2Client = new google.auth.OAuth2(
  
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN }); 
  
-async function sendMail(recipient) { 
-  try { 
+async function sendMail(recipient) {   
+    try { 
     const accessToken = await oAuth2Client.getAccessToken(); 
+    console.log(recipient);
  
     const transport = nodemailer.createTransport({ 
       service: "gmail", 
@@ -45,13 +43,12 @@ async function sendMail(recipient) {
  
     const mailOptions = { 
       from: "TRIVIA <ikatalkin67@gmail.com>", 
-      to: recipient, 
+      to: recipient,      
       subject: "Hello from Trivia", 
       text: "Thank you for registering.  Have a fun game!", 
       html: "<h3>Thank you for registering.  Have a fun game!</h3>", 
-    }; 
- 
-    console.log(CLIENT_ID); 
+    };  
+    
     const result = await transport.sendMail(mailOptions); 
     console.log(result); 
     return result; 
@@ -64,7 +61,7 @@ async function sendMail(recipient) {
 router.post( 
   "/register", 
   [ 
-    check("email", "Uncorrect Email").isEmail(), 
+    check("email", "Incorrect Email").isEmail(), 
     check("password", "Password must be minimum 6 symbols").isLength({ 
       min: 6, 
     }), 
@@ -79,7 +76,7 @@ router.post(
           errors: errors.array(), 
           message: "Email or Password is incorrect", 
         }); 
-      } 
+      }; 
  
       const { email, age, password, passwordConfirm } = req.body; 
  
@@ -90,7 +87,7 @@ router.post(
         return res 
           .status(400) 
           .json({ message: `User with email ${email} exists` }); 
-      } 
+      }; 
  
       if (password === passwordConfirm) { 
         const hashedPassword = await bcrypt.hash(password, 12); 
@@ -102,21 +99,21 @@ router.post(
  
         //email 
  
-        try { 
+        try {           
           const result = sendMail(user.email); 
  
           console.log("Email sent...", result); 
         } catch (err) { 
           console.log(err); 
-        } 
+        }; 
  
         res.status(201).json({ message: "Registration completed" }); 
       } else { 
         return res.status(400).json({ message: "Password is not correct" }); 
-      } 
+      }; 
     } catch (e) { 
       res.status(500).json({ message: e }); 
-    }  
+    };  
   } 
 ); 
  
@@ -136,7 +133,7 @@ router.post(
           errors: errors.array(), 
           message: "Email or Password is incorrect", 
         }); 
-      } 
+      }; 
  
       const { email, password } = req.body; 
  
@@ -145,13 +142,13 @@ router.post(
       //console.log(user); 
       if (!user) { 
         return res.status(400).json({ message: "User not found" }); 
-      } 
+      }; 
  
       const isMatch = await bcrypt.compare(password, user.password); 
  
       if (!isMatch) { 
         return res.status(400).json({ message: "Password is incorrect" }); 
-      } 
+      }; 
  
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { 
         expiresIn: "1h", 
@@ -162,7 +159,7 @@ router.post(
       res 
         .status(500) 
         .json({ message: "Something is wrong, please, try again" }); 
-    } 
+    }; 
   } 
 ); 
  

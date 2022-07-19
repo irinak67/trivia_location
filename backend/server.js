@@ -15,7 +15,8 @@ app.use("/api/auth", require("./routers/auth.router"));
 
 
 mongoose.connect( 
-   "mongodb+srv://salim:salim@cluster0.idfuq.mongodb.net/newitemsDB?retryWrites=true&w=majority"
+  process.env.DB_CONNECTION
+  //  "mongodb+srv://salim:salim@cluster0.idfuq.mongodb.net/newitemsDB?retryWrites=true&w=majority"
 ); 
 const itemSchema = { 
   question: String, 
@@ -26,7 +27,7 @@ const itemSchema = {
   correct_answer: String, 
 };  
 const Item = mongoose.model("Item", itemSchema); 
-console.log(itemSchema);  
+// console.log(itemSchema);  
  
   
 app.get("/items", (req, res) => { 
@@ -42,7 +43,7 @@ app.get("/items", (req, res) => {
     .catch(err => res.status(400).json("error:" + err)); 
 }); 
  
-console.log(itemSchema); 
+// console.log(itemSchema); 
  
 app.post("/newitem", (req, res) => { 
   const newItem = new Item({ 
