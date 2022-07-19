@@ -113,7 +113,7 @@ function Questions() {
       resume();
     });
 
-    socket.on(`wrong_answer_recieved_${user.userId}`, data => {
+    socket.on(`wrong_answer_received_${user.userId}`, data => {
       if (wa) {
         // setChangeBorders(false);
         setTimeout(() => {
@@ -162,7 +162,7 @@ function Questions() {
   }
 
   function reload() {
-    alert(` you got ${counter1} coruuct answer and ${counter2}worng answers`);
+    alert(` you got ${counter1} correct answer and ${counter2}wrong answers`);
   }
 
   // function nextqustion() {

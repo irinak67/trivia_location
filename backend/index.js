@@ -32,7 +32,8 @@ async function start() {
   try { 
     await mongoose 
       .connect( 
-        "mongodb+srv://salim:salim@cluster0.idfuq.mongodb.net/newitemsDB?retryWrites=true&w=majority" 
+        process.env.DB_CONNECTION
+        // "mongodb+srv://salim:salim@cluster0.idfuq.mongodb.net/newitemsDB?retryWrites=true&w=majority" 
       )  
       .then(() => { 
         console.log("connected to MongoDB..."); 
@@ -58,7 +59,7 @@ const itemSchema = {
   correct_answer: String, 
 }; 
 const Item = mongoose.model("Item", itemSchema); 
-console.log(itemSchema); 
+// console.log(itemSchema); 
  
 const itemSchema1 = { 
   question: String, 
@@ -69,7 +70,7 @@ const itemSchema1 = {
   correct_answer: String, 
 }; 
 const Item1 = mongoose.model("Item1", itemSchema1); 
-console.log(itemSchema1); 
+// console.log(itemSchema1); 
  
 app.get("/items", (req, res) => { 
   Item.find() 
@@ -77,14 +78,14 @@ app.get("/items", (req, res) => {
     .catch(err => res.status(400).json("Error: " + err));  
 }); 
  
-console.log(itemSchema); 
+// console.log(itemSchema); 
  
 app.get("/item1", (req, res) => { 
   Item1.find() 
     .then(items => res.json(items)) 
     .catch(err => res.status(400).json("Error: " + err)); 
 }); 
-console.log(itemSchema1); 
+// console.log(itemSchema1); 
  
 app.post("/newitem", (req, res) => { 
   const newItem = new Item({ 
@@ -116,7 +117,7 @@ io.on("connection", socket => {
   socket.on("wrong_answer", ({ sendToId, items }) => { 
     console.log(sendToId, "-----"); 
     io.to(usersConnected[sendToId]).emit( 
-      `wrong_answer_recieved_${sendToId}`, 
+      `wrong_answer_received_${sendToId}`, 
       items 
     ); 
   }); 
